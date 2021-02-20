@@ -1,50 +1,27 @@
 <script>
-	import successkid from 'images/successkid.jpg';
+    let sens = 0.99;
+    let spec = 0.99;
+    let n_pos_tests = 10
+    let n_neg_tests = 10
+
 </script>
 
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
-
 <svelte:head>
-	<title>Sapper project template</title>
+    <title>Kalkulačka prevalence</title>
 </svelte:head>
 
-<h1>Great success!</h1>
 
-<figure>
-	<img alt="Success Kid" src="{successkid}">
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
+<h1 class="text-5xl text-center mb-16">Kalkulačka prevalence</h1>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+
+<div class="my-3">
+    <p>Pocet positivnich testu</p>
+    <input id="input-n-pos" type=number bind:value={n_pos_tests} min=0 step=10>
+    <p>Pocet negativnich testu</p>
+    <input id="input-n-neg" type=number bind:value={n_neg_tests} min=0 step=10>
+
+    <p>Sensitivita testu</p>
+    <input id="input-sens" type=number bind:value={sens} min=0 max=1 step=0.001>
+    <p>Specificita testu</p>
+    <input id="input-spec" type=number bind:value={spec} min=0 max=1 step=0.001>
+</div>

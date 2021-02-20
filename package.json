@@ -3,10 +3,12 @@
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build",
-    "export": "sapper export",
-    "start": "node __sapper__/build"
+    "dev": "sapper dev; yarn run dev:tailwindcss",
+    "build": "yarn run build:tailwindcss && sapper build",
+    "export": "yarn run build:tailwindcss && sapper export",
+    "start": "node __sapper__/build",
+    "dev:tailwindcss": "postcss static/tailwind.css -o static/main.css -w",
+    "build:tailwindcss": "NODE_ENV=production postcss static/tailwind.css -o static/main.css"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.0",
