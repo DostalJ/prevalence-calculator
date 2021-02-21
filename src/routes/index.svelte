@@ -57,7 +57,7 @@
     $: prior_yy = prior_yy_unnorm.map(x => x / Sum(prior_yy_unnorm))
 
 
-    $: log_yy = xx.map(x => log_posterior(x, sens, spec, nNeg, nPos, alpha, beta))
+    $: log_yy = xx.map(x => log_posterior(x, sens, spec, nPos, nNeg, alpha, beta))
 
     $: yy_unnorm = log_yy.map((x) => exp(x))
     $: yy = yy_unnorm.map(x => x / Sum(yy_unnorm))
@@ -85,8 +85,17 @@
 
 <div class="my-3">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 mb-64">
-        <div>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-20 mb-64">
+        <div class="col-span-2">
+            <div class="mb-8">
+                <div class="px-4 sm:px-0">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+                    <p class="mt-1 text-sm text-gray-600">
+                        Use a permanent address where you can receive mail.
+                    </p>
+                </div>
+            </div>
+
             <ParametersInput
                     bind:alpha={alpha} bind:beta={beta}
                     bind:sens={sens} bind:spec={spec}
@@ -94,43 +103,70 @@
                     onResetClick={resetParameters}
             />
         </div>
-        <div>
-            <p class="text-red-600 text-2xl">{ExpectedValue(xx, yy)}</p>
+        <div class="col-span-3 items-center">
+            <div class="mb-8 text-right">
+                <div class="px-4 sm:px-0">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+                    <p class="mt-1 text-sm text-gray-600">
+                        Use a permanent address where you can receive mail.
+                    </p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl w-full mx-auto py-6 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row justify-center w-full lg:space-x-2 space-y-2 lg:space-y-0 mb-2 lg:mb-4">
+                    <div class="w-full lg:w-1/4">
+                        <div class="widget w-full p-4 rounded-lg bg-white border border-gray-100 shadow">
+                            <div class="flex flex-row items-center justify-between">
+                                <div class="flex flex-col">
+                                    <div class="text-gray-500">
+                                        Prevalence
+                                    </div>
+                                    <div class="text-xl font-bold">
+                                        {(ExpectedValue(xx, yy) * 100).toFixed(1)} %
+                                    </div>
+                                </div>
+                                <svg class="stroke-current text-gray-500" fill="none" height="24"
+                                     stroke="currentColor"
+                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                     viewbox="0 0 24 24" width="24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12">
+                                    </polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <div class="widget w-full p-4 rounded-lg bg-white border border-gray-100 shadow">
+                            <div class="flex flex-row items-center justify-between">
+                                <div class="flex flex-col">
+                                    <div class="text-gray-500">
+                                        Nejistota (90% DPD)
+                                    </div>
+                                    <div class="text-xl font-semibold">
+                                        {(ExpectedValue(xx, yy) * 100).toFixed(1)}
+                                        — {(ExpectedValue(xx, yy) * 100).toFixed(1)} %
+                                    </div>
+                                </div>
+                                <svg class="stroke-current text-gray-500" fill="none" height="24"
+                                     stroke="currentColor"
+                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                     viewbox="0 0 24 24" width="24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12">
+                                    </polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <!--    <DistributionPlot points={prior_points}/>-->
             <DistributionPlot points={points}/>
         </div>
     </div>
-
-
-    <!--    <label>-->
-    <!--        <p>Alfa</p>-->
-    <!--        <input type=number bind:value={alpha} min=0 max=100 step=1>-->
-    <!--        <input type=range bind:value={alpha} min=0 max=100 step=1>-->
-    <!--    </label>-->
-
-    <!--    <label>-->
-    <!--        <p>Beta</p>-->
-    <!--        <input type=number bind:value={beta} min=0 max=100 step=1>-->
-    <!--        <input type=range bind:value={beta} min=0 max=100 step=1>-->
-    <!--    </label>-->
-
-    <!--    <p>Pocet positivnich testu</p>-->
-    <!--    <input id="input-n-pos" type=number bind:value={nPos} min=0 step=10>-->
-    <!--    <p>Pocet negativnich testu</p>-->
-    <!--    <input id="input-n-neg" type=number bind:value={nNeg} min=0 step=10>-->
-
-    <!--    <label>-->
-    <!--        <p>Sensitivita testu</p>-->
-    <!--        <input type=number bind:value={sens} min=0 max=1 step=0.001>-->
-    <!--        <input type=range bind:value={sens} min=0 max=1 step=0.001>-->
-    <!--    </label>-->
-
-    <!--    <label>-->
-    <!--        <p>Specificita testu</p>-->
-    <!--        <input type=number bind:value={spec} min=0 max=1 step=0.001>-->
-    <!--        <input type=range bind:value={spec} min=0 max=1 step=0.001>-->
-    <!--    </label>-->
-
 
 </div>
