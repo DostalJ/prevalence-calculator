@@ -3,7 +3,7 @@
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev; yarn run dev:tailwindcss",
+    "dev": "sapper dev & yarn run dev:tailwindcss",
     "build": "yarn run build:tailwindcss && sapper build",
     "export": "yarn run build:tailwindcss && sapper export",
     "start": "node __sapper__/build",
@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.0",
+    "@stdlib/stdlib": "^0.0.93",
+    "@tailwindcss/forms": "^0.2.1",
     "compression": "^1.7.1",
     "polka": "next",
     "sirv": "^1.0.0"
