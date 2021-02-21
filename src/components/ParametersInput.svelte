@@ -7,7 +7,7 @@
     export let spec;
     export let nPos;
     export let nNeg;
-    const onResetClick = () => void;
+    export let onResetClick
 </script>
 
 <div class="mt-10 sm:mt-0">
