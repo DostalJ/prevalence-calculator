@@ -3,7 +3,6 @@
 
     import {scaleLinear} from 'd3-scale';
 
-    const yTicks = [0, 0.25, 0.5, 0.75, 1];
     const xTicks = [0, 0.25, 0.5, 0.75, 1];
     const padding = {top: 20, right: 15, bottom: 20, left: 25};
 
@@ -35,15 +34,14 @@
 </script>
 
 
-
-<div class="chart mt-32 p-10" bind:clientWidth={width} bind:clientHeight={height}>
+<div class="chart p-10" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
         <!-- y axis -->
         <g class="axis y-axis" transform="translate(0, {padding.top})">
-            {#each yTicks as tick}
+            {#each yScale.ticks(5) as tick}
                 <g class="tick tick-{tick}" transform="translate(0, {yScale(tick) - padding.bottom})">
                     <line x2="100%"></line>
-                    <!--                        <text y="-4">{tick} {tick === 8 ? ' million sq km' : ''}</text>-->
+                    <text y="-4">{tick}</text>
                 </g>
             {/each}
         </g>
@@ -64,11 +62,10 @@
 </div>
 
 
-
 <style>
     .chart {
-        width: 100%;
-        max-width: 500px;
+        width: 90%;
+        /*max-width: 500px;*/
         margin-left: auto;
         margin-right: auto;
     }
@@ -76,7 +73,7 @@
     svg {
         position: relative;
         width: 100%;
-        height: 200px;
+        height: 100%;
         overflow: visible;
     }
 
