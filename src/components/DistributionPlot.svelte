@@ -40,8 +40,8 @@
         <g class="axis y-axis" transform="translate(0, {padding.top})">
             {#each yScale.ticks(5) as tick}
                 <g class="tick tick-{tick}" transform="translate(0, {yScale(tick) - padding.bottom})">
-                    <line x2="100%"></line>
-                    <text y="-4">{tick}</text>
+                    <line x1="-4" x2="{width}" y1="0" y2="0"></line>
+                    <text y="-4" x="-20">{(tick * 100).toFixed(2)} %</text>
                 </g>
             {/each}
         </g>
@@ -51,10 +51,11 @@
             {#each xTicks as tick}
                 <g class="tick tick-{ tick }" transform="translate({xScale(tick)},{height})">
                     <line y1="-{height}" y2="-{padding.bottom}" x1="0" x2="0"></line>
-                    <text y="-2">{width > 380 ? tick : formatMobile(tick)}</text>
+                    <text y="-2">{(tick * 100).toFixed(0)} %</text>
                 </g>
             {/each}
         </g>
+
         <!-- data -->
         <path class="path-area" d={area}></path>
         <path class="path-line" d={path}></path>
