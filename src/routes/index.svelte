@@ -99,13 +99,13 @@
 
 <div class="my-3">
 
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-20 mb-64">
-        <div class="col-span-2">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap:5 xl:gap-20 mb-64">
+        <div class="col-span-2 mb-20">
             <div class="mb-8">
-                <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+                <div class="px-4 sm:px-0 w-2/3 mr-auto ml-0">
+                    <h2 class="text-lg font-medium leading-6 text-gray-900">Parametry výpočtu</h2>
                     <p class="mt-1 text-sm text-gray-600">
-                        Use a permanent address where you can receive mail.
+                        Zadejte vaši dosavadní znalost prevalence, parametry testů a naměřené údaje.
                     </p>
                 </div>
             </div>
@@ -119,10 +119,11 @@
         </div>
         <div class="col-span-3 items-center">
             <div class="mb-8 text-right">
-                <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+                <div class="px-4 sm:px-0 w-1/2 mr-0 ml-auto">
+                    <h2 class="text-lg font-medium leading-6 text-gray-900">Výsledky výpočtu</h2>
                     <p class="mt-1 text-sm text-gray-600">
-                        Use a permanent address where you can receive mail.
+                        Výsledky výpočtu prevalence. Odhad prevalence, 90 % interval odhadu a graf posteriorní
+                        distribuce odhadu.
                     </p>
                 </div>
             </div>
@@ -136,7 +137,7 @@
                                     <div class="text-gray-500">
                                         Prevalence
                                     </div>
-                                    <div class="text-xl font-bold">
+                                    <div class="text-xl font-extrabold">
                                         {(expected_value * 100).toFixed(1)} %
                                     </div>
                                 </div>
@@ -158,17 +159,15 @@
                                     <div class="text-gray-500">
                                         Odhad nejistoty (90% HPD)
                                     </div>
-                                    <div class="text-xl font-semibold">
+                                    <div class="text-xl font-medium">
                                         {(q10 * 100).toFixed(1)} — {(q90 * 100).toFixed(1)} %
                                     </div>
                                 </div>
-                                <svg class="stroke-current text-gray-500" fill="none" height="24"
-                                     stroke="currentColor"
-                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                     viewbox="0 0 24 24" width="24"
+                                <svg class="stroke-current text-gray-500" fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24" height="24" width="24"
                                      xmlns="http://www.w3.org/2000/svg">
-                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12">
-                                    </polyline>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </div>
                         </div>

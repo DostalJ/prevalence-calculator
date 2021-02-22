@@ -41,7 +41,7 @@
             {#each yScale.ticks(5) as tick}
                 <g class="tick tick-{tick}" transform="translate(0, {yScale(tick) - padding.bottom})">
                     <line x1="-4" x2="{width}" y1="0" y2="0"></line>
-                    <text y="-4" x="-20">{(tick * 100).toFixed(2)} %</text>
+                    <text y="-4" x="-25">{(tick * 100).toFixed(1)} %</text>
                 </g>
             {/each}
         </g>
@@ -54,6 +54,10 @@
                     <text y="-2">{(tick * 100).toFixed(0)} %</text>
                 </g>
             {/each}
+            <g class="axis-label"
+               transform="translate({(width - padding.left - padding.right) / 2},{height+padding.bottom})">
+                <text>Prevalence</text>
+            </g>
         </g>
 
         <!-- data -->
@@ -88,7 +92,7 @@
         stroke-dasharray: 2;
     }
 
-    .tick text {
+    text {
         fill: #666;
         text-anchor: start;
     }
@@ -99,6 +103,11 @@
 
     .x-axis .tick text {
         text-anchor: middle;
+    }
+
+    .axis-label text {
+        font-size: 1.2em;
+        font-weight: 300;
     }
 
     .path-line {

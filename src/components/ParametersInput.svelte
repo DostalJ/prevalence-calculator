@@ -17,6 +17,14 @@
             <div class="px-4 py-5 bg-white sm:p-6">
                 <div class="grid grid-cols-6 gap-6">
 
+                    <div class="col-span-6" aria-hidden="true">
+                        <div class="pb-5">
+                            <div class="tile-with-horizontal border-b-2 text-center">
+                                <h3 class="text-center text-gray-500">Apriorní představa o prevalenci</h3>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-span-6">
                         <label for="alfa" class="block text-sm font-medium text-gray-700">Alfa</label>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -47,9 +55,11 @@
                         </div>
                     </div>
 
-                    <div class="hidden sm:block col-span-6" aria-hidden="true">
-                        <div class="py-5">
-                            <div class="border-t-4 border-gray-200"></div>
+                    <div class="col-span-6" aria-hidden="true">
+                        <div class="pb-5">
+                            <div class="tile-with-horizontal border-b-2 text-center">
+                                <h3 class="text-center text-gray-500">Parametry použitého testu</h3>
+                            </div>
                         </div>
                     </div>
 
@@ -86,11 +96,14 @@
                         </div>
                     </div>
 
-                    <div class="hidden sm:block col-span-6" aria-hidden="true">
-                        <div class="py-5">
-                            <div class="border-t-4 border-gray-200"></div>
+                    <div class="col-span-6" aria-hidden="true">
+                        <div class="pb-5">
+                            <div class="tile-with-horizontal border-b-2 text-center">
+                                <h3 class="text-center text-gray-500">Výsledky testování</h3>
+                            </div>
                         </div>
                     </div>
+
 
                     <div class="col-span-6 sm:col-span-3">
                         <label for="positive" class="block text-sm font-medium text-gray-700">
@@ -121,9 +134,38 @@
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         on:click={onResetClick()}
                 >
-                    Reset
+                    Původní hodnoty
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+
+<style>
+    .tile-with-horizontal {
+        @border-b-2;
+        @border-gray-200;
+        @text-center;
+        /*border-bottom: 2px solid #808080;*/
+        /*text-align: center;*/
+    }
+
+    .tile-with-horizontal h3 {
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+
+        max-width: 80%;
+
+        line-height: 24px;
+        bottom: -16px;
+        font-size: 18px;
+
+        border: solid #fff;
+        border-width: 0 20px;
+
+        background: #fff;
+    }
+</style>
