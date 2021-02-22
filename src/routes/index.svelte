@@ -68,7 +68,8 @@
 
     $: log_yy = xx.map(x => log_posterior(x, sens, spec, nPos, nNeg, alpha, beta))
 
-    $: yy_unnorm = log_yy.map((x) => exp(x))
+    // Odecet maxima je maly trik, abychom zvladli upocitat i mala cisla. Vysledek by to ovlivnit nemelo.
+    $: yy_unnorm = log_yy.map((x) => exp(x - Math.max(...log_yy)))
     $: yy = yy_unnorm.map(x => x / Sum(yy_unnorm))
     $: expected_value = ExpectedValue(xx, yy)
     $: q10 = Quantile(xx, yy, 0.1)
@@ -127,7 +128,7 @@
             </div>
 
             <div class="max-w-7xl w-full mx-auto py-6 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row justify-center w-full lg:space-x-2 space-y-2 lg:space-y-0 mb-2 lg:mb-4">
+                <div class="flex flex-col lg:flex-row justify-center w-full lg:space-x-5 space-y-2 lg:space-y-0 mb-2 lg:mb-4">
                     <div class="w-full lg:w-1/4">
                         <div class="widget w-full p-4 rounded-lg bg-white border border-gray-100 shadow">
                             <div class="flex flex-row items-center justify-between">
