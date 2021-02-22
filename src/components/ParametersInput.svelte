@@ -15,13 +15,18 @@
     <div class="mt-5 md:mt-0">
         <div class="shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-5 bg-white sm:p-6">
-                <div class="grid grid-cols-6 gap-6">
+                <div class="grid grid-cols-6 gap-1">
 
+                    <!--                    <div class="col-span-6" aria-hidden="true">-->
+                    <!--                        <div class="pb-5">-->
+                    <!--                            <div class="tile-with-horizontal border-b-2 text-center">-->
+                    <!--                                <h3 class="text-center text-gray-500">Apriorní představa o prevalenci</h3>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <div class="col-span-6" aria-hidden="true">
-                        <div class="pb-5">
-                            <div class="tile-with-horizontal border-b-2 text-center">
-                                <h3 class="text-center text-gray-500">Apriorní představa o prevalenci</h3>
-                            </div>
+                        <div class="">
+                            <h3 class="text-center text-gray-500 text-lg ">Apriorní představa o prevalenci</h3>
                         </div>
                     </div>
 
@@ -55,11 +60,16 @@
                         </div>
                     </div>
 
+                    <!--                    <div class="col-span-6" aria-hidden="true">-->
+                    <!--                        <div class="pb-5">-->
+                    <!--                            <div class="tile-with-horizontal border-b-2 text-center">-->
+                    <!--                                <h3 class="text-center text-gray-500">Parametry použitého testu</h3>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <div class="col-span-6" aria-hidden="true">
-                        <div class="pb-5">
-                            <div class="tile-with-horizontal border-b-2 text-center">
-                                <h3 class="text-center text-gray-500">Parametry použitého testu</h3>
-                            </div>
+                        <div class="pt-8">
+                            <h3 class="text-center text-gray-500 text-lg ">Parametry použitého testu</h3>
                         </div>
                     </div>
 
@@ -91,16 +101,20 @@
                             <input type=range name="spec" id="spec-slider" class="col-span-2"
                                    min=0.5 max=1 step=0.001
                                    bind:value={spec}
-
                             >
                         </div>
                     </div>
 
+                    <!--                    <div class="col-span-6" aria-hidden="true">-->
+                    <!--                        <div class="pb-5">-->
+                    <!--                            <div class="tile-with-horizontal border-b-2 text-center">-->
+                    <!--                                <h3 class="text-center text-gray-500">Výsledky testování</h3>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <div class="col-span-6" aria-hidden="true">
-                        <div class="pb-5">
-                            <div class="tile-with-horizontal border-b-2 text-center">
-                                <h3 class="text-center text-gray-500">Výsledky testování</h3>
-                            </div>
+                        <div class="pt-8">
+                            <h3 class="text-center text-gray-500 text-lg ">Výsledky testování</h3>
                         </div>
                     </div>
 
@@ -142,30 +156,30 @@
 </div>
 
 
-<style>
-    .tile-with-horizontal {
-        @border-b-2;
-        @border-gray-200;
-        @text-center;
-        /*border-bottom: 2px solid #808080;*/
-        /*text-align: center;*/
-    }
+<!--<style>-->
+<!--    .tile-with-horizontal {-->
+<!--        @border-b-2;-->
+<!--        @border-gray-200;-->
+<!--        @text-center;-->
+<!--        /*border-bottom: 2px solid #808080;*/-->
+<!--        /*text-align: center;*/-->
+<!--    }-->
 
-    .tile-with-horizontal h3 {
-        overflow: hidden;
-        position: relative;
-        display: inline-block;
-        white-space: nowrap;
+<!--    .tile-with-horizontal h3 {-->
+<!--        overflow: hidden;-->
+<!--        position: relative;-->
+<!--        display: inline-block;-->
+<!--        white-space: nowrap;-->
 
-        max-width: 80%;
+<!--        max-width: 80%;-->
 
-        line-height: 24px;
-        bottom: -16px;
-        font-size: 18px;
+<!--        line-height: 24px;-->
+<!--        bottom: -16px;-->
+<!--        font-size: 18px;-->
 
-        border: solid #fff;
-        border-width: 0 20px;
+<!--        border: solid #fff;-->
+<!--        border-width: 0 20px;-->
 
-        background: #fff;
-    }
-</style>
+<!--        background: #fff;-->
+<!--    }-->
+<!--</style>-->
