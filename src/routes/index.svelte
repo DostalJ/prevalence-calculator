@@ -14,6 +14,15 @@
         }
         return expVal
     }
+    const Quantile = (arrValues, arrProbs, quantile) => {
+        // https://stackoverflow.com/a/44081700/7662538
+        const cdf = arrProbs.reduce((a, x, i) => [...a, x + (a[i - 1] || 0)], [])
+        // console.log('yy_cumsum', cdf)
+        for (let i in cdf) {
+            if (cdf[i] >= quantile) return arrValues[i]
+        }
+        return NaN
+    }
 
     const initialValues = {
         alpha: 1,
@@ -51,7 +60,7 @@
     const log_likelihood = (x, sens, spec, nPos, nNeg) => ln(theta_pos(x, sens, spec)) * nPos + ln(theta_neg(x, sens, spec)) * nNeg
     const log_posterior = (x, sens, spec, nPos, nNeg, a, b) => log_prior(x, a, b) + log_likelihood(x, sens, spec, nPos, nNeg)
 
-    const xx = linspace(0.00001, 0.99999, 500);
+    const xx = linspace(0.00001, 0.99999, 200);
     // console.log(xx)
     $: prior_yy_unnorm = xx.map(x => log_prior(x, alpha, beta)).map(exp)
     $: prior_yy = prior_yy_unnorm.map(x => x / Sum(prior_yy_unnorm))
@@ -61,6 +70,10 @@
 
     $: yy_unnorm = log_yy.map((x) => exp(x))
     $: yy = yy_unnorm.map(x => x / Sum(yy_unnorm))
+    $: expected_value = ExpectedValue(xx, yy)
+    $: q10 = Quantile(xx, yy, 0.1)
+    $: q90 = Quantile(xx, yy, 0.9)
+
     // $: {
     //     console.log('log_post', xx.map(x => log_posterior(x, sens, spec, nNeg, nPos, alpha, beta)))
     //     console.log('xx', xx)
@@ -123,7 +136,7 @@
                                         Prevalence
                                     </div>
                                     <div class="text-xl font-bold">
-                                        {(ExpectedValue(xx, yy) * 100).toFixed(1)} %
+                                        {(expected_value * 100).toFixed(1)} %
                                     </div>
                                 </div>
                                 <svg class="stroke-current text-gray-500" fill="none" height="24"
@@ -142,11 +155,10 @@
                             <div class="flex flex-row items-center justify-between">
                                 <div class="flex flex-col">
                                     <div class="text-gray-500">
-                                        Nejistota (90% DPD)
+                                        Odhad nejistoty (90% HPD)
                                     </div>
                                     <div class="text-xl font-semibold">
-                                        {(ExpectedValue(xx, yy) * 100).toFixed(1)}
-                                        — {(ExpectedValue(xx, yy) * 100).toFixed(1)} %
+                                        {(q10 * 100).toFixed(1)} — {(q90 * 100).toFixed(1)} %
                                     </div>
                                 </div>
                                 <svg class="stroke-current text-gray-500" fill="none" height="24"
