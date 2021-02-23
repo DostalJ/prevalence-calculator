@@ -1,5 +1,6 @@
 <script>
     export let points = [];
+    export let prior_points = [];
 
     import {scaleLinear} from 'd3-scale';
 
@@ -12,7 +13,7 @@
     const minX = 0;
     const maxX = 1;
     const minY = 0;
-    $: maxY = Math.max.apply(Math, points.map(p => p.y)) * 1.1;
+    $: maxY = Math.max.apply(Math, [...points, ...prior_points].map(p => p.y)) * 1.1;
 
     $: xScale = scaleLinear()
         .domain([minX, maxX])
@@ -25,6 +26,11 @@
 
     $: path = `M${points.map(p => `${xScale(p.x)},${yScale(p.y)}`).join('L')}`;
     $: area = `${path}L${xScale(maxX)},${yScale(0)}L${xScale(minX)},${yScale(0)}Z`;
+
+    $: prior_path = `M${prior_points.map(p => `${xScale(p.x)},${yScale(p.y)}`).join('L')}`;
+    $: prior_area = `${prior_path}L${xScale(maxX)},${yScale(0)}L${xScale(minX)},${yScale(0)}Z`;
+
+    const legendSize = 14;
 
     function formatMobile(tick) {
         return "'" + tick.toString().slice(-2);
@@ -61,8 +67,23 @@
         </g>
 
         <!-- data -->
+        <path class="path-area prior" d={prior_area}></path>
+        <path class="path-line prior" d={prior_path}></path>
         <path class="path-area" d={area}></path>
         <path class="path-line" d={path}></path>
+
+        <!-- Legend -->
+        <g transform="translate({padding.left},{0})">
+            <g>
+                <rect y="0" x="0" width={legendSize} height={legendSize} fill="rgba(100, 38, 99, 0.5)"></rect>
+                <text y={legendSize/2} x={1.5*legendSize} style="alignment-baseline: middle">Prior</text>
+            </g>
+            <g>
+                <rect y="0" x="100" width={legendSize} height={legendSize} fill="rgb(0, 100, 100)"></rect>
+                <text y={legendSize/2} x={100+1.5*legendSize} style="alignment-baseline: middle">Posterior</text>
+            </g>
+        </g>
+
     </svg>
 </div>
 
@@ -119,6 +140,14 @@
     }
 
     .path-area {
-        fill: rgba(0, 100, 100, 0.2);
+        fill: rgba(0, 100, 100, 0.4);
+    }
+
+    .prior.path-line {
+        stroke: rgba(100, 38, 99, 0.2);
+    }
+
+    .prior.path-area {
+        fill: rgba(100, 38, 99, 0.1);
     }
 </style>

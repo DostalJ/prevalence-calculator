@@ -60,7 +60,7 @@
     const log_likelihood = (x, sens, spec, nPos, nNeg) => ln(theta_pos(x, sens, spec)) * nPos + ln(theta_neg(x, sens, spec)) * nNeg
     const log_posterior = (x, sens, spec, nPos, nNeg, a, b) => log_prior(x, a, b) + log_likelihood(x, sens, spec, nPos, nNeg)
 
-    const xx = linspace(0.00001, 0.99999, 200);
+    const xx = linspace(0.00001, 0.99999, 500);
     // console.log(xx)
     $: prior_yy_unnorm = xx.map(x => log_prior(x, alpha, beta)).map(exp)
     $: prior_yy = prior_yy_unnorm.map(x => x / Sum(prior_yy_unnorm))
@@ -94,7 +94,7 @@
 </svelte:head>
 
 
-<h1 class="text-5xl text-center mb-16">Kalkulačka prevalence</h1>
+<h1 class="text-5xl text-center mb-20">Kalkulačka prevalence</h1>
 
 
 <div class="my-3">
@@ -176,8 +176,7 @@
             </div>
 
 
-            <!--    <DistributionPlot points={prior_points}/>-->
-            <DistributionPlot points={points}/>
+            <DistributionPlot points={points} prior_points={prior_points}/>
         </div>
     </div>
 
