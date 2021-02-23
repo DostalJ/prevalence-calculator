@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "prevalence-calculator",
+  "description": "Kalkulačka prevalence",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev & yarn run dev:tailwindcss",
@@ -8,13 +8,16 @@
     "export": "yarn run build:tailwindcss && sapper export",
     "start": "node __sapper__/build",
     "dev:tailwindcss": "postcss static/tailwind.css -o static/main.css -w",
-    "build:tailwindcss": "NODE_ENV=production postcss static/tailwind.css -o static/main.css"
+    "build:tailwindcss": "NODE_ENV=production postcss static/tailwind.css -o static/main.css",
+    "serve-export": "npx serve __sapper__/export",
+    "deploy": "yarn run export && node ./scripts/gh-pages.js"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.0",
     "@stdlib/stdlib": "^0.0.93",
     "@tailwindcss/forms": "^0.2.1",
     "compression": "^1.7.1",
+    "gh-pages": "^3.1.0",
     "polka": "next",
     "sirv": "^1.0.0"
   },

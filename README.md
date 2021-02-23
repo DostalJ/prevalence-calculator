@@ -1,4 +1,10 @@
-Podle tohoto navodu: https://dev.to/vannsl/configuring-tailwindcss-for-sapper-58jm
+# Kalkulačka prevalence
+Vytvořeno pro praktiky v laboratořích odhalující pravdu o koronaviru.
+Slouží také, jako laboratoř pro mne - pro testování nových technologií (Svelte, Sapper, d3, gh-pages).
+
+## Použité návody a kuchařky
+- [Propojení Sapper a Tailwind](https://dev.to/vannsl/configuring-tailwindcss-for-sapper-58jm)
+- [Pekny nadpis s horizontalni carou](https://stackoverflow.com/a/7932797/7662538)
 
 
 # sapper-template
