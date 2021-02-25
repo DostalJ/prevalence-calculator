@@ -40,7 +40,7 @@
 </script>
 
 
-<div class="chart p-10" bind:clientWidth={width} bind:clientHeight={height}>
+<div class="chart p-10 mb-24" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
         <!-- y axis -->
         <g class="axis y-axis" transform="translate(0, {padding.top})">

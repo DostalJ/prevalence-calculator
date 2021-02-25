@@ -100,18 +100,18 @@
     <h1 class="text-5xl text-center mb-5">Kalkulačka prevalence</h1>
     <p class="text-right text-gray-500">
         Vytvořil
-        <a href="https://abradatas.cz/" class="text-blue-500" target="_blank">Abradatras</a>
+        <a href="https://abradatas.cz/?utm_source=prevalence-calculator&utm_medium=banner&utm_campaign=prevalence-calculator" class="text-blue-500" target="_blank">Abradatras</a>
         a
-        <a href="https://www.4bin.org/" class="text-blue-500" target="_blank">4B|N</a>.</p>
+        <a href="https://www.4bin.org/?utm_source=prevalence-calculator&utm_medium=banner&utm_campaign=prevalence-calculator" class="text-blue-500" target="_blank">4B|N</a>.</p>
     <Description/>
 </div>
 
 
 <div class="my-3">
 
-    <div class="grid grid-cols-1 md:grid-cols-5 gap:5 xl:gap-20 mb-64">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap:5 xl:gap-20 mb-1">
         <div class="col-span-2 mb-5 md:mb-20">
-            <div class="mb-8">
+            <div class="mb-4">
                 <div class="md:w-2/3 px-4 sm:px-0 mr-auto ml-0">
                     <h2 class="text-lg font-medium leading-6 text-gray-900">Parametry výpočtu</h2>
                     <p class="mt-1 text-sm text-gray-600">
@@ -189,5 +189,7 @@
             <DistributionPlot points={points} prior_points={prior_points}/>
         </div>
     </div>
+    
+    <a href="https://abradatas.cz/?utm_source=prevalence-calculator&utm_medium=banner&utm_campaign=prevalence-calculator" target="_blank"><img class="mr-0 ml-auto h-14" height="50px" width="auto" src="A-bradatas-50dpi.png" alt="Logo Abradatas."></a>
 
 </div>
