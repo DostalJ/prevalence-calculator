@@ -1,6 +1,8 @@
 <script>
     import DistributionPlot from '../components/DistributionPlot.svelte';
     import ParametersInput from '../components/ParametersInput.svelte';
+    import Description from '../components/Description.svelte'
+
     import logpdf from '@stdlib/stats/base/dists/beta/logpdf'
     import ln from '@stdlib/math/base/special/ln'
     import exp from '@stdlib/math/base/special/exp'
@@ -95,6 +97,8 @@
 
 
 <h1 class="text-5xl text-center mb-20">Kalkulačka prevalence</h1>
+
+<Description/>
 
 
 <div class="my-3">
