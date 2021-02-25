@@ -7,7 +7,17 @@
     export let spec;
     export let nPos;
     export let nNeg;
-    export let onResetClick
+    export let onResetClick;
+    export let alfaBetaParametrization = false;
+
+    let mu = 0.2;
+    let nu = 10;
+    $: if (!alfaBetaParametrization) {
+        alpha = mu * nu
+        beta = (1 - mu) * nu
+    }
+
+
 </script>
 
 <!--<div class="mt-10 sm:mt-0">-->
@@ -30,35 +40,69 @@
                         </div>
                     </div>
 
-                    <div class="col-span-6">
-                        <label for="alfa" class="block text-sm font-medium text-gray-700">Alfa</label>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <input type=number name="alfa" id="alfa"
-                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-lg col-span-1"
-                                   min=1 max=100 step=1
-                                   bind:value={alpha}
-                            >
-                            <input type=range name="alfa" id="alfa-slider" class="col-span-2"
-                                   min=1 max=100 step=1
-                                   bind:value={alpha}
-                            >
+                    {#if alfaBetaParametrization}
+                        <div class="col-span-6">
+                            <label for="alfa" class="block text-sm font-medium text-gray-700">Alfa</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <input type=number name="alfa" id="alfa"
+                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-lg col-span-1"
+                                       min=1 max=100 step=1
+                                       bind:value={alpha}
+                                >
+                                <input type=range name="alfa" id="alfa-slider" class="col-span-2"
+                                       min=1 max=100 step=1
+                                       bind:value={alpha}
+                                >
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-span-6">
-                        <label for="beta" class="block text-sm font-medium text-gray-700">Beta</label>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <input type=number name="beta" id="beta"
-                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-lg col-span-1"
-                                   min=1 max=100 step=1
-                                   bind:value={beta}
-                            >
-                            <input type=range name="beta" id="beta-slider" class="col-span-2"
-                                   min=1 max=100 step=1
-                                   bind:value={beta}
-                            >
+                        <div class="col-span-6">
+                            <label for="beta" class="block text-sm font-medium text-gray-700">Beta</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <input type=number name="beta" id="beta"
+                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-lg col-span-1"
+                                       min=1 max=100 step=1
+                                       bind:value={beta}
+                                >
+                                <input type=range name="beta" id="beta-slider" class="col-span-2"
+                                       min=1 max=100 step=1
+                                       bind:value={beta}
+                                >
+                            </div>
                         </div>
-                    </div>
+                    {:else}
+                        <div class="col-span-6">
+                            <label for="alfa" class="block text-sm font-medium text-gray-700">Průměr apriorního
+                                odhadu</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <input type=number name="mu" id="mu"
+                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-lg col-span-1"
+                                       min=0.01 max=0.99 step=0.01
+                                       bind:value={mu}
+                                >
+                                <input type=range name="mu" id="mu-slider" class="col-span-2"
+                                       min=0.01 max=0.99 step=0.01
+                                       bind:value={mu}
+                                >
+                            </div>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label for="beta" class="block text-sm font-medium text-gray-700">Jistota apriotního
+                                odhadu</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <input type=number name="nu" id="nu"
+                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-lg col-span-1"
+                                       min=2 max=100 step=1
+                                       bind:value={nu}
+                                >
+                                <input type=range name="nu" id="nu-slider" class="col-span-2"
+                                       min=2 max=100 step=1
+                                       bind:value={nu}
+                                >
+                            </div>
+                        </div>
+                    {/if}
 
                     <!--                    <div class="col-span-6" aria-hidden="true">-->
                     <!--                        <div class="pb-5">-->
@@ -146,7 +190,7 @@
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button type="submit"
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        on:click={onResetClick()}
+                        on:click={() => {mu=0.2; nu=10; onResetClick()}}
                 >
                     Původní hodnoty
                 </button>
