@@ -110,9 +110,9 @@
 <div class="my-3">
 
     <div class="grid grid-cols-1 md:grid-cols-5 gap:5 xl:gap-20 mb-64">
-        <div class="col-span-2 mb-20">
+        <div class="col-span-2 mb-5 md:mb-20">
             <div class="mb-8">
-                <div class="px-4 sm:px-0 w-2/3 mr-auto ml-0">
+                <div class="md:w-2/3 px-4 sm:px-0 mr-auto ml-0">
                     <h2 class="text-lg font-medium leading-6 text-gray-900">Parametry výpočtu</h2>
                     <p class="mt-1 text-sm text-gray-600">
                         Zadejte vaši dosavadní znalost prevalence, parametry testů a naměřené údaje.
@@ -129,7 +129,7 @@
         </div>
         <div class="col-span-3 items-center">
             <div class="mb-8 text-right">
-                <div class="px-4 sm:px-0 w-1/2 mr-0 ml-auto">
+                <div class="md:w-1/2 px-4 sm:px-0 mr-0 ml-auto">
                     <h2 class="text-lg font-medium leading-6 text-gray-900">Výsledky výpočtu</h2>
                     <p class="mt-1 text-sm text-gray-600">
                         Výsledky výpočtu prevalence. Odhad prevalence, 90 % interval odhadu a graf posteriorní
@@ -169,7 +169,7 @@
                                     <div class="text-gray-500">
                                         Odhad nejistoty (90% HPD)
                                     </div>
-                                    <div class="text-xl font-medium">
+                                    <div class="text-xl">
                                         {(q10 * 100).toFixed(1)} — {(q90 * 100).toFixed(1)} %
                                     </div>
                                 </div>

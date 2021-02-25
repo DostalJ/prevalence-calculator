@@ -72,7 +72,7 @@
                         </div>
                     {:else}
                         <div class="col-span-6">
-                            <label for="alfa" class="block text-sm font-medium text-gray-700">Apriorní odhad
+                            <label for="mu" class="block text-sm font-medium text-gray-700">Apriorní odhad
                                 prevalence</label>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <input type=number name="mu" id="mu"
@@ -88,7 +88,7 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="beta" class="block text-sm font-medium text-gray-700">Jistota apriotního
+                            <label for="nu" class="block text-sm font-medium text-gray-700">Jistota apriotního
                                 odhadu</label>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <input type=number name="nu" id="nu"
