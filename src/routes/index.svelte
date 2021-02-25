@@ -96,9 +96,15 @@
 </svelte:head>
 
 
-<h1 class="text-5xl text-center mb-20">Kalkulačka prevalence</h1>
-
-<Description/>
+<div class="w-11/12 md:w-4/5 xl:w-2/3 mx-auto">
+    <h1 class="text-5xl text-center mb-5">Kalkulačka prevalence</h1>
+    <p class="text-right text-gray-500">
+        Vytvořil
+        <a href="https://abradatas.cz/" class="text-blue-500" target="_blank">Abradatras</a>
+        a
+        <a href="https://www.4bin.org/" class="text-blue-500" target="_blank">4B|N</a>.</p>
+    <Description/>
+</div>
 
 
 <div class="my-3">

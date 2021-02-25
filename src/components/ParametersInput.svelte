@@ -72,8 +72,8 @@
                         </div>
                     {:else}
                         <div class="col-span-6">
-                            <label for="alfa" class="block text-sm font-medium text-gray-700">Průměr apriorního
-                                odhadu</label>
+                            <label for="alfa" class="block text-sm font-medium text-gray-700">Apriorní odhad
+                                prevalence</label>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <input type=number name="mu" id="mu"
                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-lg col-span-1"
